@@ -1,0 +1,37 @@
+---
+title: "week2lab.rmd"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(reticulate)
+use_python('/Users/Sam/miniconda3/bin/python', required=TRUE)
+```
+
+```{r}
+library(nycflights13)
+data(flights)
+```
+
+```{python}
+import pandas
+print(type(r.flights))
+print(r.flights)
+```
+
+```{r}
+data(mtcars)
+```
+
+```{python}
+print(r.mtcars.head())
+```
+
+```{python}
+import seaborn as sns
+import matplotlib.pyplot as plt
+g = sns.FacetGrid(r.mtcars, col="cyl")
+g.map(sns.scatterplot,"wt","mpg");
+plt.show()
+```
